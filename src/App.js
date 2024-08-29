@@ -1,26 +1,14 @@
-import './App.css';
-import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from "./pages/Home.js";
+import Counter from "./pages/Counter.js";
 
-
-export default function Home() {
-
-  const [counter, setCounter] = useState(0);
-
-  useEffect( () => {
-    console.log("Counter has been incremented by 1!");
-    console.log("New counter is ", counter);
-
-
-  })
-
-
-
+export default function App() {
   return (
-    <div className="App">
-      <h1>Counter</h1>
-      <p>The counter is: {counter}</p>
-      <button className='incrementButton' onClick={() => setCounter(counter + 1)}>+1</button>
-
-    </div>
-  );
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/counter" element={<Counter />} />
+      </Routes>
+    </Router>
+  )
 }
